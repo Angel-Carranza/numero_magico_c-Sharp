@@ -197,7 +197,7 @@ namespace AdivinaElNumeroMagico
 
         public static void Estadisticas(int respuesta, int resultado, int i, float contGames, string nombre, float MP, int gameWin, int gameLost, float acumWin, float acumApuestas, float premioMayor, float premioMenor)
         {
-            float porcentWin, porcentLost, resultadoFinal = 0;
+            float porcentWin, porcentLost, resultadoFinal;
 
             resultadoFinal = acumWin - acumApuestas;
 
