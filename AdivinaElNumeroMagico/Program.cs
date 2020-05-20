@@ -97,7 +97,7 @@ namespace AdivinaElNumeroMagico
                     }
 
                 } while (respuesta != resultado && i != 10);
-                //
+                //                
                 if (respuesta != resultado)
                 {
                     gameLost++;
@@ -206,7 +206,7 @@ namespace AdivinaElNumeroMagico
                 i = i - 1;
                 contGames -= 1;
                 porcentWin = (gameWin / contGames) * 100;
-                Console.WriteLine("\nJugador {0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa ganado {3} partidas  \nPorcentaje de partidas ganadas {4:f2}% \nel monto de su premio en esta partida es de {5:C} \nLos premios acumulados son de un total de {6:C} \nEl monto total de apuestas es de {7:C} \nDeuda o ganancia del juego {8:C} \nEl mayor premio es de {9:C} \nel menor premio es de {10:C}", nombre, i, contGames, gameWin, porcentWin, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
+                Console.WriteLine("\nJugador \t\t\t\t\t{0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa ganado \t\t\t\t\t{3} partidas \nPorcentaje de partidas ganadas \t\t\t{4:f2}% \nel monto de su premio en esta partida es de \t{5:C} \nLos premios acumulados son de un total de \t{6:C} \nEl monto total de apuestas es de \t\t{7:C} \nDeuda o ganancia del juego \t\t\t{8:C} \nEl mayor premio es de \t\t\t\t{9:C} \nel menor premio es de \t\t\t\t{10:C}", nombre, i, contGames, gameWin, porcentWin, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
                 i = i + 1;
                 contGames += 1;
                 Console.ReadKey();
@@ -216,7 +216,7 @@ namespace AdivinaElNumeroMagico
             {
                 contGames -= 1;
                 porcentLost = (gameLost / contGames) * 100;
-                Console.WriteLine("\nJugador {0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa perdido {3} partidas \nPorcentaje de partidas perdidas {4:f2}% \nel monto de su premio en esta partida es de {5:C} \nLos premios acumulados son de un total de {6:C} \nEl monto total de apuestas es de {7:C} \nDeuda o ganancia del juego {8:C} \nEl mayor premio es de {9:C} \nel menor premio es de {10:C}", nombre, i, contGames, gameLost, porcentLost, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
+                Console.WriteLine("\nJugador \t\t\t\t\t{0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa perdido \t\t\t\t\t{3} partidas \nPorcentaje de partidas perdidas \t\t{4:f2}% \nel monto de su premio en esta partida es de \t{5:C} \nLos premios acumulados son de un total de \t{6:C} \nEl monto total de apuestas es de \t\t{7:C} \nDeuda o ganancia del juego \t\t\t{8:C} \nEl mayor premio es de \t\t\t\t{9:C} \nel menor premio es de \t\t\t\t{10:C}", nombre, i, contGames, gameLost, porcentLost, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
                 contGames += 1;
                 Console.ReadKey();
             }
