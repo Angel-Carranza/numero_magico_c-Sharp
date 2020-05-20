@@ -8,7 +8,6 @@ namespace AdivinaElNumeroMagico
 {
     class Program
     {
-        public const float MMP = 1000;
         static void Main(string[] args)
         {
             int jugar;
@@ -46,7 +45,7 @@ namespace AdivinaElNumeroMagico
         {
             char pista;
             string nombre, opc;
-            float MP, MA, contGames = 1, acumWin = 0, acumApuestas = 0, premioMayor = 0, premioMenor = 1000;
+            float MP, MA, MMP, contGames = 1, acumWin = 0, acumApuestas = 0, premioMayor = 0, premioMenor = 0;
             int i, respuesta, resultado, gameWin, gameLost;
 
             Console.Clear();
@@ -69,6 +68,7 @@ namespace AdivinaElNumeroMagico
                 Console.WriteLine("Bienvenido al juego: Adivina El numero magico \nTendras que elegir un numero entre 1 y 100 \npodras acertar?");
 
                 MA = Apuesta();
+                MMP = MA * 100;
                 acumApuestas += MA;
 
                 do
@@ -107,15 +107,21 @@ namespace AdivinaElNumeroMagico
                 {
                     gameWin++;
                     acumWin += MP;
+                    if (gameWin==1)
+                    {
+                        premioMayor = MP;
+                        premioMenor = MP;
+                    }
+                    if (MP > premioMayor)
+                    {
+                        premioMayor = MP;
+                    }
+                    else if (MP < premioMenor)
+                    {
+                        premioMenor = MP;
+                    }
                 }
-                if (MP > premioMayor)
-                {
-                    premioMayor = MP;
-                }
-                else if (MP < premioMenor)
-                {
-                    premioMenor = MP;
-                }
+                
 
                 //
                 do
@@ -206,7 +212,7 @@ namespace AdivinaElNumeroMagico
                 i = i - 1;
                 contGames -= 1;
                 porcentWin = (gameWin / contGames) * 100;
-                Console.WriteLine("\nJugador \t\t\t\t\t{0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa ganado \t\t\t\t\t{3} partidas \nPorcentaje de partidas ganadas \t\t\t{4:f2}% \nel monto de su premio en esta partida es de \t{5:C} \nLos premios acumulados son de un total de \t{6:C} \nEl monto total de apuestas es de \t\t{7:C} \nDeuda o ganancia del juego \t\t\t{8:C} \nEl mayor premio es de \t\t\t\t{9:C} \nel menor premio es de \t\t\t\t{10:C}", nombre, i, contGames, gameWin, porcentWin, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
+                Console.WriteLine("\nJugador \t\t\t\t\t{0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa ganado {3} partidas \nPorcentaje de partidas ganadas \t\t\t{4:f2}% \nel monto de su premio en esta partida es de \t{5:C} \nLos premios acumulados son de un total de \t{6:C} \nEl monto total de apuestas es de \t\t{7:C} \nDeuda o ganancia del juego \t\t\t{8:C} \nEl mayor premio es de \t\t\t\t{9:C} \nel menor premio es de \t\t\t\t{10:C}", nombre, i, contGames, gameWin, porcentWin, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
                 i = i + 1;
                 contGames += 1;
                 Console.ReadKey();
@@ -216,7 +222,7 @@ namespace AdivinaElNumeroMagico
             {
                 contGames -= 1;
                 porcentLost = (gameLost / contGames) * 100;
-                Console.WriteLine("\nJugador \t\t\t\t\t{0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa perdido \t\t\t\t\t{3} partidas \nPorcentaje de partidas perdidas \t\t{4:f2}% \nel monto de su premio en esta partida es de \t{5:C} \nLos premios acumulados son de un total de \t{6:C} \nEl monto total de apuestas es de \t\t{7:C} \nDeuda o ganancia del juego \t\t\t{8:C} \nEl mayor premio es de \t\t\t\t{9:C} \nel menor premio es de \t\t\t\t{10:C}", nombre, i, contGames, gameLost, porcentLost, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
+                Console.WriteLine("\nJugador \t\t\t\t\t{0}\nPerdio {1} veces durante esta partida \nHa jugado {2} veces en la misma cuenta \nHa perdido {3} partidas \nPorcentaje de partidas perdidas \t\t{4:f2}% \nel monto de su premio en esta partida es de \t{5:C} \nLos premios acumulados son de un total de \t{6:C} \nEl monto total de apuestas es de \t\t{7:C} \nDeuda o ganancia del juego \t\t\t{8:C} \nEl mayor premio es de \t\t\t\t{9:C} \nel menor premio es de \t\t\t\t{10:C}", nombre, i, contGames, gameLost, porcentLost, MP, acumWin, acumApuestas, resultadoFinal, premioMayor, premioMenor);
                 contGames += 1;
                 Console.ReadKey();
             }
