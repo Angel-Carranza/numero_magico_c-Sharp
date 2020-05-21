@@ -12,32 +12,36 @@ namespace AdivinaElNumeroMagico
         {
             int jugar;
             float game;
-            game = 0;
+            
             do
             {
-                Console.Clear();
-                Console.WriteLine("1 Nuevo juego \t0 No jugar");
-                jugar = int.Parse(Console.ReadLine());
-            } while (jugar != 0 && jugar != 1);
-            while (jugar == 1)
-            {
-                game = Jugar();
-                jugar = 0;
-            }
-            while (jugar == 0)
-            {
-                if (game == 0)
+                game = 0;
+                do
                 {
                     Console.Clear();
-                    Console.WriteLine("te pierdes de un buen juego");
-                }
-                else if (game >= 1)
+                    Console.WriteLine("1 Nuevo juego \t0 No jugar");
+                    jugar = int.Parse(Console.ReadLine());
+                } while (jugar != 0 && jugar != 1);
+                while (jugar == 1)
                 {
-                    Console.Clear();
-                    Console.WriteLine("gracias por jugar este juego");
+                    game = Jugar();
+                    jugar = 0;
                 }
-                jugar = 1;
-            }
+                while (jugar == 0)
+                {
+                    if (game == 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("te pierdes de un buen juego");
+                    }
+                    else if (game >= 1)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("gracias por jugar este juego");
+                    }
+                    jugar = 1;
+                }
+            } while (jugar == 1 || jugar == 0);
             Console.ReadKey();
         }//0
 
