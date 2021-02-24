@@ -12,36 +12,32 @@ namespace AdivinaElNumeroMagico
         {
             int jugar;
             float game;
-            
+            game = 0;
             do
             {
-                game = 0;
-                do
+                Console.Clear();
+                Console.WriteLine("1 Nuevo juego \t0 No jugar");
+                jugar = int.Parse(Console.ReadLine());
+            } while (jugar != 0 && jugar != 1);
+            while (jugar == 1)
+            {
+                game = Jugar();
+                jugar = 0;
+            }
+            while (jugar == 0)
+            {
+                if (game == 0)
                 {
                     Console.Clear();
-                    Console.WriteLine("1 Nuevo juego \t0 No jugar");
-                    jugar = int.Parse(Console.ReadLine());
-                } while (jugar != 0 && jugar != 1);
-                while (jugar == 1)
-                {
-                    game = Jugar();
-                    jugar = 0;
+                    Console.WriteLine("te pierdes de un buen juego");
                 }
-                while (jugar == 0)
+                else if (game >= 1)
                 {
-                    if (game == 0)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("te pierdes de un buen juego");
-                    }
-                    else if (game >= 1)
-                    {
-                        Console.Clear();
-                        Console.WriteLine("gracias por jugar este juego");
-                    }
-                    jugar = 1;
+                    Console.Clear();
+                    Console.WriteLine("gracias por jugar este juego");
                 }
-            } while (jugar == 1 || jugar == 0);
+                jugar = 1;
+            }
             Console.ReadKey();
         }//0
 
@@ -96,7 +92,7 @@ namespace AdivinaElNumeroMagico
                         } while (pista != 'X' && pista != 'Y');
                         if (pista == 'X')
                         {
-                            Pista(respuesta);
+                            Pista(respuesta, resultado);
                         }
                     }
 
@@ -111,7 +107,7 @@ namespace AdivinaElNumeroMagico
                 {
                     gameWin++;
                     acumWin += MP;
-                    if (gameWin==1)
+                    if (gameWin == 1)
                     {
                         premioMayor = MP;
                         premioMenor = MP;
@@ -125,8 +121,6 @@ namespace AdivinaElNumeroMagico
                         premioMenor = MP;
                     }
                 }
-                
-
                 //
                 do
                 {
@@ -179,9 +173,9 @@ namespace AdivinaElNumeroMagico
             return m;
         }//4
 
-        public static void Pista(int respuesta)
+        public static void Pista(int respuesta, int resultado)
         {
-            if (respuesta < NumMagico())
+            if (respuesta < resultado)
             {
                 Console.WriteLine("Pruebe con un numero mas grande");
             }
@@ -221,8 +215,7 @@ namespace AdivinaElNumeroMagico
                 contGames += 1;
                 Console.ReadKey();
             }
-            else
-            if (respuesta != resultado)
+            else if (respuesta != resultado)
             {
                 contGames -= 1;
                 porcentLost = (gameLost / contGames) * 100;
